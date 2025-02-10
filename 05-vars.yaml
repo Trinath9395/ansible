@@ -1,6 +1,6 @@
 - name: variables
   hosts: localhost
-  commication: local
+  communication: local
   vars:
     # Play level variables, global variables
     NAME: Trinath Reddy
