@@ -1,0 +1,20 @@
+- name: varibales from #https://docs.aws.amazon.com/ja_jp/AWSCloudFormation/latest/UserGuide/aws-resource-efs-filesystem.html
+FileSystem
+  Type: AWS::EFS::FileSystem
+  Properties: 
+    AvailabilityZoneName: String
+    BackupPolicy: 
+      BackupPolicy
+    BypassPolicyLockoutSafetyCheck: Boolean
+    Encrypted: Boolean
+    FileSystemPolicy: Json
+    FileSystemTags: 
+      - ElasticFileSystemTag
+    KmsKeyId: String
+    LifecyclePolicies: 
+      - LifecyclePolicy
+    PerformanceMode: String
+    ProvisionedThroughputInMibps: Double
+    ReplicationConfiguration: 
+      ReplicationConfiguration
+    ThroughputMode: String
