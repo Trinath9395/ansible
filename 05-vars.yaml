@@ -11,10 +11,10 @@
   - name: Print the variables with task-level override
     vars:
       # Task level variables (Overrides play-level variables)
-      COURSE: "DevOps Specialist"
+      COURSE: "Ansible"
     ansible.builtin.debug:
       msg: "Course: {{ COURSE }}, Duration: {{ DURATION }}, Trainer: {{ TRAINER }}"
 
-  - name: Print the variables without override
+  - name: Print the variables1
     ansible.builtin.debug:
       msg: "Course: {{ COURSE }}, Duration: {{ DURATION }}, Trainer: {{ TRAINER }}"
