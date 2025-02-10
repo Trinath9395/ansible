@@ -9,4 +9,4 @@
   tasks:
   - name: print the variable
     ansible.builtin.debug:
-      msg: "name is {{NAME}}, job is {{JOB}}, location is {{LOCATION}}"
+      msg: "My name is {{NAME}}, i am working as a {{JOB}}, working location is  {{LOCATION}}"
