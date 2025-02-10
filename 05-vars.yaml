@@ -1,0 +1,18 @@
+- name: variables
+  hosts: localhost
+  commication: local
+  vars:
+    # Play level variables, global variables
+    NAME: Trinath Reddy
+    JOB: Devops engineer
+    LOCATION: Bangalore
+  tasks:
+  - name: Print the variables
+    vars: # Task level variables
+    Local variables:
+    ansible.builtin.debug:
+      msg: "My name is {{NAME}}, i am working as a {{JOB}}, working location is  {{LOCATION}}"
+
+  - name: Print the variables1
+    ansible.builtin.debug:
+      msg: "My name is {{NAME}}, i am working as a {{JOB}}, working location is  {{LOCATION}}"
