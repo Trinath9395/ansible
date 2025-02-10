@@ -3,7 +3,7 @@
   connection: local
   vars_prompt:
   - name: COURSE
-    promot: Please enter the duration.
+    prompt: Please enter the duration.
   - name: DURATION
     prompt: Please enter the duration.
   - name: TRAINER
