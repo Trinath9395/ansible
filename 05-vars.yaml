@@ -10,6 +10,7 @@
   - name: Print the variables
     vars: # Task level variables
     Local variables:
+      NAME: Trinath Reddy
     ansible.builtin.debug:
       msg: "My name is {{NAME}}, i am working as a {{JOB}}, working location is  {{LOCATION}}"
 
