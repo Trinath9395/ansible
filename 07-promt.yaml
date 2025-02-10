@@ -1,20 +1,14 @@
-- name: varibales from #https://docs.aws.amazon.com/ja_jp/AWSCloudFormation/latest/UserGuide/aws-resource-efs-filesystem.html
-FileSystem
-  Type: AWS::EFS::FileSystem
-  Properties: 
-    AvailabilityZoneName: String
-    BackupPolicy: 
-      BackupPolicy
-    BypassPolicyLockoutSafetyCheck: Boolean
-    Encrypted: Boolean
-    FileSystemPolicy: Json
-    FileSystemTags: 
-      - ElasticFileSystemTag
-    KmsKeyId: String
-    LifecyclePolicies: 
-      - LifecyclePolicy
-    PerformanceMode: String
-    ProvisionedThroughputInMibps: Double
-    ReplicationConfiguration: 
-      ReplicationConfiguration
-    ThroughputMode: String
+- name: varibales from files
+  hosts: localhost
+  connection: local
+  vars_prompt:
+  - name: COURSE
+    promot: Please enter the duration.
+  - name: DURATION
+    prompt: Please enter the duration.
+  - name: TRAINER
+    prompt: Please enter the trainer name.
+  tasks: 
+  - name: Print the course information
+    ansible.builtin.debug:
+      msg: "Course: {{ COURSE }}, Duration: {{ DURATION }}, Trainer: {{ TRAINER }}"
