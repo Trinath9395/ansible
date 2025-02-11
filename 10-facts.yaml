@@ -1,6 +1,6 @@
 - name: Print the facts
   hosts: web
-  tasks: 
+  tasks:
   - name: print the facts
-  ansible.builtin.debug:
-    msg: "{{ ansible_facts }}"
+    ansible.builtin.debug:
+      msg: "{{ ansible_facts }}"
