@@ -1,16 +1,14 @@
 - name: Variables
   hosts: localhost
   connection: local
-  vars:
-    # Play level variables (Global variables)
+  vars: # Play level variables (Global variables)
     COURSE: "DevOps"
     DURATION: "120 hr"
     TRAINER: "Trinath Reddy"
 
   tasks:
   - name: Print the variables with task-level override
-    vars:
-      # Task level variables (Overrides play-level variables)
+    vars: # Task level variables (Overrides play-level variables)
       COURSE: "Ansible"
     ansible.builtin.debug:
       msg: "Course: {{ COURSE }}, Duration: {{ DURATION }}, Trainer: {{ TRAINER }}"
