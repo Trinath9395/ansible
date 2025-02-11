@@ -1,14 +1,13 @@
 - name: Install packages
-  hosts: web 
+  hosts: web
   become: yes
   tasks:
   - name: Installed linux packages
     ansible.builtin.package:
       name: "{{ item.name }}"
-      state: "{{ item.state }}""
+      state: "{{ item.state }}"
     loop:
     - { name: 'gcc', state: 'present' }
     - { name: 'git', state: 'absent' }
     - { name: 'mysql', state: 'present' }
     - { name: 'zip', state: 'absent' }
-
