@@ -16,7 +16,7 @@
     vars:
       course:
         name: devops
-        duration: 120 hr
+        duration: "120 hr"
         trainer: trinath
     ansible.built.debug:
       msg: "course: {{ course | dict2items }}"
