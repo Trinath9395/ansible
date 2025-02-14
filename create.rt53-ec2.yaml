@@ -1,0 +1,22 @@
+- name: crate ec2 and route53 records 
+  hosts: localhost 
+  connection: local 
+  vars: 
+   subnet_id: subnet-0074fad9a325101aa
+   sg_id: sg-0d7e203e4f0120287
+   ami_id: ami-09c813fb71547fc4f
+   instance_type: t2.micro 
+   instances: 
+   - mysql 
+   - backend 
+   - frontend 
+  tasks: 
+  - name: create ec2 instances 
+    amazon.aws.ec2_instance:
+      name: "{{ item }}"
+      subnet_id: "{{ subnet_id }}"
+      security_group: "{{ sg_id }}"
+      image_id: "{{ ami_id }}"
+      instance_type: "{{ instance_type }}"
+    loop: "{{ instances }}" 
+     
