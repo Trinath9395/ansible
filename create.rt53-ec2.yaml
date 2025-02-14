@@ -37,7 +37,7 @@
 
   - name: Print EC2 Instance Information
     ansible.builtin.debug:
-      msg: "{{ item.instances[0].private_ip_address }}"
+      msg: "{{ item.instances[0].public_ip_address }}"
     loop: "{{ ec2_info.results }}"
 
   - name: create Route53 records  for private Ips
