@@ -30,14 +30,25 @@
     loop: "{{ instances }}"
     register: ec2_info
 
-  - name: print the Ec2 info
+  - name: Debug EC2 Info (Check Structure)
     ansible.builtin.debug:
-      msg: "{{ ec2_info }}"
+    var: ec2_info
 
-  - name: print private IP addresses
+  - name: Print EC2 Instance Information
     ansible.builtin.debug:
-      msg: "Instance {{ item.instance_id }} - Private IP: {{ item.private_ip_address }}"
-    loop: "{{ ec2_info.instances }}"
+      msg: "Instance {{ item.instances[0].instance_id }} - Private IP: {{ item.instances[0].private_ip_address }}"
+    loop: "{{ ec2_info.results }}"
+
+
+    
+  # - name: print the Ec2 info
+  #   ansible.builtin.debug:
+  #     msg: "{{ ec2_info }}"
+
+  # - name: print private IP addresses
+  #   ansible.builtin.debug:
+  #     msg: "Instance {{ item.instance_id }} - Private IP: {{ item.private_ip_address }}"
+  #   loop: "{{ ec2_info.instances }}"
 
 
 
