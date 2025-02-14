@@ -6,6 +6,7 @@
     sg_id: sg-0d7e203e4f0120287
     ami_id: ami-09c813fb71547fc4f
     instance_type: t2.micro
+    zone: trinath.online
     instances:
     - mysql
     - backend
@@ -39,22 +40,14 @@
       msg: "Instance {{ item.instances[0].instance_id }} - Private IP: {{ item.instances[0].private_ip_address }}"
     loop: "{{ ec2_info.results }}"
 
-    
-  # - name: print the Ec2 info
-  #   ansible.builtin.debug:
-  #     msg: "{{ ec2_info }}"
-
-  # - name: print private IP addresses
-  #   ansible.builtin.debug:
-  #     msg: "Instance {{ item.instance_id }} - Private IP: {{ item.private_ip_address }}"
-  #   loop: "{{ ec2_info.instances }}"
-
-
-
-  #     msg: "{{ item.item }}: {{ item.instances[0].private_ip_address }}"
-  #   loop: "{{ ec2_info.results }}"
-
-  # - name: Print EC2 Instance Information
-  #     ansible.builtin.debug:
-  #       msg: "Instance {{ item.instance_id }} - Private IP: {{ item.private_ip_address }}"
-  #   loop: "{{ ec2_info.instances }}"
+  - name: create Route53 records  for private Ips
+    amazon.aws.route53:
+      state: present
+      zone: "{{ zone }}"
+      record: "{{ item.item }}.{{ zone }}"
+      type: A
+      ttl: 1
+      value: "Instance {{ item.instances[0].instance_id }} - Private IP: {{ item.instances[0].private_ip_address }}"
+      wait: true
+      overwrite: true
+    loop: "{{ ec2_info.results }}"
