@@ -33,11 +33,11 @@
 
   # - name: Debug EC2 Info (Check Structure)
   #   ansible.builtin.debug:
-  #     var: ec2_info
+  #     msg: "{{ec2_info}}"
 
   - name: Print EC2 Instance Information
     ansible.builtin.debug:
-      msg: "Instance {{ item.instances[0].instance_id }} - Private IP: {{ item.instances[0].private_ip_address }}"
+      msg: "{{ item.instances[0].private_ip_address }}"
     loop: "{{ ec2_info.results }}"
 
   - name: create Route53 records  for private Ips
@@ -47,7 +47,7 @@
       record: "{{ item.item }}.{{ zone }}"
       type: A
       ttl: 1
-      value: "Instance {{ item.instances[0].instance_id }} - Private IP: {{ item.instances[0].private_ip_address }}"
+      value: "{{ item.instances[0].private_ip_address }}"
       wait: true
       overwrite: true
     loop: "{{ ec2_info.results }}"
