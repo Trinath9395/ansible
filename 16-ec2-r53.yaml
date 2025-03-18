@@ -1,6 +1,6 @@
 - name: create EC2 instance and r53 records
-  connection: local
-  hosts: local
+  connection: localhost
+  hosts: localhost
   vars:
     subnet_id: subnet-0452ce0b87e65b4ee
     ami_id: i-094b119afba6f4c3f
